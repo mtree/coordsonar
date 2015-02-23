@@ -34,7 +34,7 @@ Thing.find({}).remove(function() {
 
 // Generate some random coordinates + user names
 var coord_data = [];
-for (var i = 0; i < 10000; i++) {
+for (var i = 0; i < 6000; i++) {
   coord_data.push({
     user: Chance.first(),
     location: [
@@ -42,7 +42,7 @@ for (var i = 0; i < 10000; i++) {
       Chance.latitude({fixed: 2, min: 49.00, max: 54.50})
     ]
   });
-};
+}
 
 Coord.find({}).remove(function() {
   Coord.create(coord_data);
