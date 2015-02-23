@@ -33,7 +33,7 @@ exports.target = function(req, res) {
             coordinates : coordinates
          },
          $minDistance: 0,
-         $maxDistance: 10000
+         $maxDistance: 25000
       }
     }
   },
