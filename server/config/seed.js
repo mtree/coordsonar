@@ -6,6 +6,8 @@
 'use strict';
 
 var Thing = require('../api/thing/thing.model');
+var Coord = require('../api/coord/coord.model');
+var Chance = require('chance').Chance();
 
 
 Thing.find({}).remove(function() {
@@ -28,4 +30,20 @@ Thing.find({}).remove(function() {
     name : 'Deployment Ready',
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
   });
+});
+
+// Generate some random coordinates + user names
+var coord_data = [];
+for (var i = 0; i < 10000; i++) {
+  coord_data.push({
+    user: Chance.first(),
+    location: [
+      Chance.longitude({fixed: 2, min: 14.07, max: 24.09}), 
+      Chance.latitude({fixed: 2, min: 49.00, max: 54.50})
+    ]
+  });
+};
+
+Coord.find({}).remove(function() {
+  Coord.create(coord_data);
 });
